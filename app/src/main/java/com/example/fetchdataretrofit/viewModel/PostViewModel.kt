@@ -11,11 +11,8 @@ import com.example.fetchdataretrofit.model.bitcoin
 import java.util.Objects
 
 class PostViewModel: ViewModel() {
-    private val _posts= mutableStateOf<Post>(
-        value = TODO(),
-        policy = TODO()
-    )
-    val posts: State<Post> = _posts
+    private val _posts= mutableStateOf<List<Post>>(emptyList())
+    val posts: State<List<Post>> = _posts
 
     init {
         fetchPosts()

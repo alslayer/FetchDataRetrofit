@@ -6,8 +6,8 @@ import com.example.fetchdataretrofit.model.bitcoin
 import retrofit2.http.GET
 
 interface ApiService {
-    @GET("/posts/1")
-    suspend fun getPosts(): Post
+    @GET("/posts")
+    suspend fun getPosts(): List<Post>
 }
 
 //@GET("posts")

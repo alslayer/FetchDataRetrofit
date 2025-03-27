@@ -52,8 +52,8 @@ fun PostCard(post: Post) {
     ) {
         Column (modifier = Modifier.padding(16.dp)) {
             Text(text = "Post #${post.id}",style = MaterialTheme.typography.bodyLarge, color = Color.White )
-//            Text(text = post.title, style = MaterialTheme.typography.bodyMedium, color = Color.White )
-//            Text(text = post.body, style = MaterialTheme.typography.bodySmall, color = Color.White )
+            Text(text = post.title, style = MaterialTheme.typography.bodyMedium, color = Color.White )
+            Text(text = post.body, style = MaterialTheme.typography.bodySmall, color = Color.White )
 
         }
     }
