@@ -1,8 +1,6 @@
 package com.example.fetchdataretrofit.viewModel
 
-import com.example.fetchdataretrofit.model.BitcoinX
 import com.example.fetchdataretrofit.model.Post
-import com.example.fetchdataretrofit.model.bitcoin
 import retrofit2.http.GET
 
 interface ApiService {

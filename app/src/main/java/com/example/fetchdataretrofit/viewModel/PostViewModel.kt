@@ -6,8 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.fetchdataretrofit.model.Post
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.State
-import com.example.fetchdataretrofit.model.BitcoinX
-import com.example.fetchdataretrofit.model.bitcoin
 import java.util.Objects
 
 class PostViewModel: ViewModel() {

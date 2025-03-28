@@ -18,9 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
-import com.example.fetchdataretrofit.model.BitcoinX
 import com.example.fetchdataretrofit.model.Post
-import com.example.fetchdataretrofit.model.bitcoin
 import com.example.fetchdataretrofit.view.theme.PurpleGrey40
 import com.example.fetchdataretrofit.viewModel.PostViewModel
 
