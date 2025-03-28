@@ -1,5 +1,6 @@
 package com.example.fetchdataretrofit.viewModel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,11 +19,14 @@ class PostViewModel: ViewModel() {
 
     private fun fetchPosts() {
         viewModelScope.launch {
-            try {
-                _posts.value = RetrofitInstance.api.getPosts()
+            val response = try {
+                RetrofitInstance.api.getPosts()
+//                _posts.value = RetrofitInstance.api.getPosts()
             } catch (e: Exception) {
                 //Handle Errors
+                Log.e("TAG", "Error: " + e.message)
             }
+            println(response.toString())
         }
     }
 
