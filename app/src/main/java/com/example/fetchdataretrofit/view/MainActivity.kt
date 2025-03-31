@@ -25,9 +25,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     containerColor = Color.LightGray
                 ) {
+
                     PostListScreen(
                         paddingValues = it,
                     )
+
                 }
             }
         }

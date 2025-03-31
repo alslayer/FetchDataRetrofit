@@ -18,6 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
+import com.example.fetchdataretrofit.model.Book
+import com.example.fetchdataretrofit.model.OpenLibraryBook
+import com.example.fetchdataretrofit.model.OpenLibrarySearchResult
 import com.example.fetchdataretrofit.model.Post
 import com.example.fetchdataretrofit.view.theme.PurpleGrey40
 import com.example.fetchdataretrofit.viewModel.PostViewModel
@@ -25,7 +28,9 @@ import com.example.fetchdataretrofit.viewModel.PostViewModel
 @Composable
 fun PostListScreen (viewModel: PostViewModel =PostViewModel(), paddingValues :PaddingValues) {
 
-    val posts by viewModel.posts
+    val posts by viewModel._openLibrarySearchResult
+//    val docs = posts.docs
+    val openLibrarySearchResult = viewModel._openLibrarySearchResult.value
 
     if (posts == null){
         CircularProgressIndicator()
@@ -35,22 +40,51 @@ fun PostListScreen (viewModel: PostViewModel =PostViewModel(), paddingValues :Pa
             verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.padding(paddingValues)
         ) {
-            items(posts){
-                PostCard(it)
-            }
+//            println("In column" + posts.numFound)
+//            val sendList = convertListToMyObjectList(docs)
+//            var count = 0
+
+//            openLibrarySearchResult?.docs?.forEach { book ->
+//                    PostCard(
+//                        post = openLibrarySearchResult
+//                    )
+//            }
+
+            val bookCount = openLibrarySearchResult?.numFound
+            val bookList: List<OpenLibraryBook> = openLibrarySearchResult!!.docs
+
+//            if (bookCount != null) {
+
+                items(bookList){
+                    if (openLibrarySearchResult != null) {
+                        PostCard(
+                            post = (it)
+                        )
+                    }
+                }
+
+//            }
         }
     }
 }
 
 @Composable
-fun PostCard(post: Post) {
+fun PostCard(post: OpenLibraryBook) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(PurpleGrey40)
     ) {
         Column (modifier = Modifier.padding(16.dp)) {
-            Text(text = "Post #${post.num_found}",style = MaterialTheme.typography.bodyLarge, color = Color.White )
-//            Text(text = post.title, style = MaterialTheme.typography.bodyMedium, color = Color.White )
+//            post?.docs?.forEach { book ->
+//                Text(text = book.title)
+            if (post != null) {
+                Text(text = post.title,style = MaterialTheme.typography.bodyLarge, color = Color.White )
+            }
+//            }
+
+//            println("In column" + post.)
+//            Text(text = "Post #${post.get(count)}",style = MaterialTheme.typography.bodyLarge, color = Color.White )
+//            Text(text = post.documentation_url, style = MaterialTheme.typography.bodyMedium, color = Color.White )
 //            Text(text = post.body, style = MaterialTheme.typography.bodySmall, color = Color.White )
 
         }
@@ -58,7 +92,20 @@ fun PostCard(post: Post) {
 }
 
 
-
+//data class MyObject(val value: String)
+//
+fun convertListToMyObjectList(stringList: List<Any>): List<Book> {
+    val mutableList: MutableList<Book> = mutableListOf(Book())
+    return stringList.map { str -> mutableList.set(
+        0,
+        element = TODO()
+    ) }
+}
+//
+//// Example usage:
+//val strings = listOf("one", "two", "three")
+//val objects = convertListToMyObjectList(strings)
+//// objects will be: [MyObject(value="one"), MyObject(value="two"), MyObject(value="three")]
 
 
 
