@@ -17,9 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
-import com.example.fetchdataretrofit.model.OpenLibraryBook
-import com.example.fetchdataretrofit.model.OpenLibrarySearchResult
+import com.example.fetchdataretrofit.model.BookModel
 import com.example.fetchdataretrofit.view.theme.PurpleGrey40
 import com.example.fetchdataretrofit.viewModel.PostViewModel
 
@@ -37,28 +35,25 @@ fun PostListScreen (viewModel: PostViewModel =PostViewModel(), paddingValues :Pa
             verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.padding(paddingValues)
         ) {
-            val bookList: List<OpenLibraryBook> = openLibrarySearchResult!!.docs
+            val bookList: List<BookModel> = openLibrarySearchResult!!.books
+
             items(bookList){
-                if (openLibrarySearchResult != null) {
-                    PostCard(
-                        post = (it)
-                    )
-                }
+                PostCard(
+                    post = (it)
+                )
             }
         }
     }
 }
 
 @Composable
-fun PostCard(post: OpenLibraryBook) {
+fun PostCard(post: BookModel) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(PurpleGrey40)
     ) {
         Column (modifier = Modifier.padding(16.dp)) {
-            if (post != null) {
-                Text(text = post.title,style = MaterialTheme.typography.bodyLarge, color = Color.White )
-            }
+            Text(text = post.title,style = MaterialTheme.typography.bodyLarge, color = Color.White )
         }
     }
 }
